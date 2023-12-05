@@ -23,7 +23,7 @@ struct Card: View {
                     .frame(width: 150, height: 170)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(hex: "#e3e6fa")) // Set the background color here
+                            .fill(Color(hex: "#edeffa")) // Set the background color here
                     )
                     .overlay(
                         VStack(spacing: 0) {
@@ -36,22 +36,26 @@ struct Card: View {
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(height: 120)
+                                        .frame(height: 100)
                                         .cornerRadius(10)
                                 },
                                 placeholder: {
-                                    Color(hex: "#e3e6fa") // Placeholder color
+                                    Color(hex: "#5c5c5c") // Placeholder color
                                 }
                             )
                             
                             // Second Rectangle with Text
                             Rectangle()
                                 .foregroundColor(.white)
+                                .opacity(0)
                                 .cornerRadius(10)
-                                .frame(height: 25)
+                                .frame(height: 40)
                                 .overlay(
                                     Text(pokemon.name)
                                         .foregroundColor(.black)
+                                        .bold()
+                                        
+                                        
                                 )
                         }
                     )
