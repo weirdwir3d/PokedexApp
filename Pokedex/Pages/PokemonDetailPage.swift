@@ -52,13 +52,13 @@ struct PokemonDetailPage: View {
                         switch details {
                         case .success(let details):
                             VStack {
-                                AboutRow(label: "Name:", value: details.name.capitalized)
+//                                AboutRow(label: "Name:", value: details.name.capitalized)
                                 AboutRow(label: "ID:", value: String(details.id))
-                                AboutRow(label: "Base:", value: details.baseExperience.formatted() + " XP")
+                                AboutRow(label: "Base:", value: details.baseExp.formatted() + " XP")
                                 AboutRow(label: "Weight:", value: details.weight.formatted() + " kg")
                                 AboutRow(label: "Height:", value: details.height.formatted() + " m")
-                                AboutRow(label: "Types:", value: details.types.map { $0.type.name.capitalized }.joined(separator: ", "))
-                                AboutRow(label: "Abilities:", value: details.abilities.map { $0.ability.name.capitalized }.joined(separator: ", "))
+                                AboutRow(label: "Types:", value: details.types.map { $0.name.capitalized }.joined(separator: ", "))
+                                AboutRow(label: "Abilities:", value: details.abilities.map { $0.name.capitalized }.joined(separator: ", "))
                             }
                             .environmentObject(detailStore)
                         case .failure(let error):
