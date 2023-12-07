@@ -1,13 +1,10 @@
-//
-//  PokemonDetail.swift
-//  Pokedex
-//
-//  Created by Kevin van den Hoek on 13/10/2023.
-//
-
 import Foundation
 
 struct PokemonDetail {
     
-    // TODO: Implement
+    var types: [String]
+    var baseExp: String
+    var weight: Double
+    var height: Double
+    var abilities: [String]
 }
