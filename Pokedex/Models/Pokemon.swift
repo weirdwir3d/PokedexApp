@@ -1,10 +1,3 @@
-//
-//  Pokemon.swift
-//  Pokedex
-//
-//  Created by Kevin van den Hoek on 13/10/2023.
-//
-
 import Foundation
 
 struct Pokemon: Identifiable {
@@ -15,4 +8,17 @@ struct Pokemon: Identifiable {
     var imageUrl: URL {
         return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(id).png")!
     }
+    
+    init(id: Int, name: String) {
+            self.id = id
+            self.name = name
+        }
+        
+//        init(id: Int, name: String, imageUrl: String, liked: Bool) {
+//            self.id = id
+//            self.name = name
+//            self.imageUrl = imageUrl
+//            self.liked = liked
+//        }
+    
 }

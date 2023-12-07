@@ -1,10 +1,3 @@
-//
-//  LikedPage.swift
-//  PokedexApp721447
-//
-//  Created by opendag on 05/12/2023.
-//
-
 import SwiftUI
 
 struct LikedPage: View {
