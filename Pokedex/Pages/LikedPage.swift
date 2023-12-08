@@ -27,6 +27,13 @@ struct LikedPage: View {
                             .padding()
                         case .failure(let error):
                             Text("Something went wrong: \(error.localizedDescription)")
+                                .padding(16)
+                            Button("Retry", action: {
+                                pokemonStore.pokemon = nil
+                                Task {
+                                    await pokemonStore.setup()
+                                }
+                            })
                         }
                     } else {
                         ProgressView()

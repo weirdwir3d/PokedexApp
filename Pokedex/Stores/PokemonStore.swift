@@ -12,7 +12,7 @@ class PokemonStore: ObservableObject {
 }
 
 // MARK: Data fetch
-private extension PokemonStore {
+extension PokemonStore {
     
     func setup() async {
         do {

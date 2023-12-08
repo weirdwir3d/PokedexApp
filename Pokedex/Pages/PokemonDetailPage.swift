@@ -92,6 +92,14 @@ struct PokemonDetailPage: View {
                             .environmentObject(detailStore)
                         case .failure(let error):
                             Text("Something went wrong in the Pokemon Detils page: \(error.localizedDescription)")
+                                .padding(16)
+                            Button("Retry", action: {
+                                Task {
+                                    detailStore.details = nil
+                                    await detailStore.fetchDetails(for: pokemon)
+                                }
+                            })
+                            
                         }
                     } else {
                         ProgressView()
