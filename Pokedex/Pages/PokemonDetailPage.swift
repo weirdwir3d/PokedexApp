@@ -11,38 +11,32 @@ import SwiftUI
 struct PokemonDetailPage: View {
     
     let pokemon: Pokemon
-        
-        @EnvironmentObject
-        var pokemonStore: PokemonStore
-        
-        @StateObject
-        var detailStore = PokemonDetailStore()
-        
+    
+    @EnvironmentObject
+    var favoritesStore: FavoritesStore
+    
+    @EnvironmentObject
+    var pokemonStore: PokemonStore
+    
+    @StateObject
+    var detailStore = PokemonDetailStore()
+    
     
     var body: some View {
-        VStack {
-            ZStack {
+        
+        ScrollView{
                 VStack {
-                    Color(Color.red)
-                        .frame(maxHeight: 380)
-                    Spacer()
-                        .background(Color(Color.pink))
-                }.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                
-                VStack() {
                     HStack {
                         Text(pokemon.name)
-                            .font(
-                                Font.custom("Cabinet Grotesk Variable", size: 32)
-                                    .weight(.heavy)
-                            )
+                            .font(.system(size: 34))
+                            .fontWeight(.bold)
                             .multilineTextAlignment(.trailing)
                         
                         Spacer()
                         
-//                        Text("#" + pokemon.id.formatPokedexNumber())
-//                            .font(Font.custom("Cabinet Grotesk Variable", size: 24))
-//                            .multilineTextAlignment(.leading)
+                        Text("#" + String(pokemon.id))
+                            .font(.system(size: 30))
+                            .multilineTextAlignment(.leading)
                     }
                     .padding()
                     
@@ -52,14 +46,49 @@ struct PokemonDetailPage: View {
                         switch details {
                         case .success(let details):
                             VStack {
-                                AboutRow(label: "Name:", value: details.name.capitalized)
-                                AboutRow(label: "ID:", value: String(details.id))
-                                AboutRow(label: "Base:", value: details.baseExperience.formatted() + " XP")
+                                
+                                HStack{
+                                    ForEach(details.types, id: \.self) { type in
+                                        TypeBadge(type: type.name.capitalized)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.top, -32)
+                                
+                                
+                                AsyncImage(
+                                    url: pokemon.imageUrl,
+                                    content: { image in
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 300, height: 300)
+                                        //                                            .cornerRadius(10)
+                                    },
+                                    placeholder: {
+                                        Color(hex: "#5c5c5c")
+                                    }
+                                )
+                                .toolbar {
+                                    ToolbarItem(placement: .topBarTrailing) {
+                                        Button(action: { favoritesStore.toggle(for: pokemon) }) {
+                                            let isFavorite = favoritesStore.isFavorite(pokemon)
+                                            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                                        }
+                                        //                                            Image(systemName: "heart.fill")
+                                        .tint(Color.black)
+                                    }
+                                }
+                                AboutRow(label: "Name:", value: pokemon.name.capitalized)
+                                AboutRow(label: "ID:", value: String(pokemon.id))
+                                AboutRow(label: "Base:", value: details.baseExp.formatted() + " XP")
                                 AboutRow(label: "Weight:", value: details.weight.formatted() + " kg")
                                 AboutRow(label: "Height:", value: details.height.formatted() + " m")
-                                AboutRow(label: "Types:", value: details.types.map { $0.type.name.capitalized }.joined(separator: ", "))
-                                AboutRow(label: "Abilities:", value: details.abilities.map { $0.ability.name.capitalized }.joined(separator: ", "))
+                                AboutRow(label: "Types:", value: details.types.map { $0.name.capitalized }.joined(separator: ", "))
+                                AboutRow(label: "Abilities:", value: details.abilities.map { $0.name.capitalized }.joined(separator: ", "))
+                                Text("This text is only here to make the page bigger and show that it is actually scrollable and you would be able to see all details also on smaller phones with smaller screens ")
                             }
+                            .padding()
                             .environmentObject(detailStore)
                         case .failure(let error):
                             Text("Something went wrong in the Pokemon Detils page: \(error.localizedDescription)")
@@ -70,38 +99,17 @@ struct PokemonDetailPage: View {
                     
                     Spacer()
                 }
+                
+            }
+            .frame(alignment: .top)
+            .navigationBarTitleDisplayMode(.inline)
+            .task {
+                await detailStore.fetchDetails(for: pokemon)
             }
         }
-        .frame(alignment: .top)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            // Handle the heart icon tap action here
-        }) {
-//            if (liked) {
-////                Button(action: {
-////                    pokemonStore.unlikePokemon(id: pokemon.id)
-////                    liked.toggle()
-////                }) {
-////                    Image(systemName: "heart.fill")
-////                        .foregroundColor(.red)
-////                }
-//            } else {
-////                Button(action: {
-////                    liked.toggle()
-////                    pokemonStore.likePokemon(id: pokemon.id)
-////                }) {
-////                    Image(systemName: "heart")
-////                        .foregroundColor(.black)
-////                }
-//            }
-            
-        }
-        )
-        .task {
-            await detailStore.fetchDetails(for: pokemon)
-        }
-    }
+        
+    
+    
     
 }
 
@@ -111,6 +119,7 @@ struct PokemonDetailPage: View {
     NavigationView {
         PokemonDetailPage(pokemon: .test)
     }
+    .environmentObject(FavoritesStore())
 }
 
 struct AboutRow: View {
@@ -120,16 +129,15 @@ struct AboutRow: View {
     var body: some View {
         HStack {
             Text(label)
-                .font(
-                    Font.custom("Rubik", size: 14)
-                        .weight(.semibold)
-                )
-                .foregroundColor(Color(Color.green))
+                .font(.system(size: 20))
+                .fontWeight(.semibold)
+            
+            //                .foregroundColor(Color(Color.black))
                 .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
             
             Text(value)
-                .font(Font.custom("Rubik", size: 14))
-                .foregroundColor(Color(Color.green))
+                .font(.system(size: 18))
+            //                .foregroundColor(Color(Color.black))
                 .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
         }
         .padding(8)

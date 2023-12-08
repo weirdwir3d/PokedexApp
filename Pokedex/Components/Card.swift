@@ -48,7 +48,6 @@ struct Card: View {
                                         .foregroundColor(.black)
                                         .bold()
                                         
-                                        
                                 )
                         }
                     )
