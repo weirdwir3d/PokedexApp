@@ -33,6 +33,7 @@
 		C8E5190E2B1FC22D0073FEEB /* idBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E5190D2B1FC22D0073FEEB /* idBadge.swift */; };
 		C8E519112B1FD7450073FEEB /* LikedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E519102B1FD7450073FEEB /* LikedPage.swift */; };
 		C8EE441E2B2306330082E4C0 /* TypeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE441D2B2306330082E4C0 /* TypeBadge.swift */; };
+		C8F221042B23B68400DF6E0E /* Splashscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F221032B23B68400DF6E0E /* Splashscreen.swift */; };
 		C8F43B052B21B6F7000E2AD1 /* DetailResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F43B042B21B6F7000E2AD1 /* DetailResponseEntity.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		C8E5190D2B1FC22D0073FEEB /* idBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = idBadge.swift; sourceTree = "<group>"; };
 		C8E519102B1FD7450073FEEB /* LikedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPage.swift; sourceTree = "<group>"; };
 		C8EE441D2B2306330082E4C0 /* TypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBadge.swift; sourceTree = "<group>"; };
+		C8F221032B23B68400DF6E0E /* Splashscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splashscreen.swift; sourceTree = "<group>"; };
 		C8F43B042B21B6F7000E2AD1 /* DetailResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponseEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				166978282AD95DA400A6E428 /* HomePage.swift */,
 				166978372AD96B7200A6E428 /* PokemonDetailPage.swift */,
 				C8E519102B1FD7450073FEEB /* LikedPage.swift */,
+				C8F221032B23B68400DF6E0E /* Splashscreen.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				166978232AD95CEB00A6E428 /* PokemonStore.swift in Sources */,
 				1669783C2AD9702F00A6E428 /* PokemonDetail.swift in Sources */,
 				C8ACFD252B21EA7000C60D53 /* TypeEntity.swift in Sources */,
+				C8F221042B23B68400DF6E0E /* Splashscreen.swift in Sources */,
 				166978142AD95C5200A6E428 /* PokedexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
