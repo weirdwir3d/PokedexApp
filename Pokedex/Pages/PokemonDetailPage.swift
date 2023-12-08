@@ -75,10 +75,30 @@ struct PokemonDetailPage: View {
                                             let isFavorite = favoritesStore.isFavorite(pokemon)
                                             Image(systemName: isFavorite ? "heart.fill" : "heart")
                                         }
-                                        //                                            Image(systemName: "heart.fill")
-                                        .tint(Color.black)
                                     }
+                                    
+                                    ToolbarItem(placement: .topBarTrailing) {
+                                            Button(action: {
+                                                let pokemonImg = pokemon.imageUrl
+
+                                                let activityViewController = UIActivityViewController(
+                                                    activityItems: [pokemonImg],
+                                                    applicationActivities: nil
+                                                )
+
+                                                UIApplication.shared.windows.first?.rootViewController?.present(
+                                                    activityViewController,
+                                                    animated: true,
+                                                    completion: nil
+                                                )
+                                            }) {
+                                                Image(systemName: "square.and.arrow.up")
+                                            }
+                                            .tint(Color.black)
+                                        }
+                                    
                                 }
+                                
                                 AboutRow(label: "Name:", value: pokemon.name.capitalized)
                                 AboutRow(label: "ID:", value: String(pokemon.id))
                                 AboutRow(label: "Base:", value: details.baseExp.formatted() + " XP")
