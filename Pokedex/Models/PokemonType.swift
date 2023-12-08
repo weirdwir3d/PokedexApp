@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonType {
+struct PokemonType: Hashable, Equatable {
     let name: String
     let url: String
 }

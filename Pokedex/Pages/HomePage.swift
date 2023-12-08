@@ -5,10 +5,13 @@ struct HomePage: View {
     
     @EnvironmentObject
     var pokemonStore: PokemonStore
+    
+    @StateObject
+    var favoritesStore = FavoritesStore()
+    
     @State private var searchText = ""
     
     var body: some View {
-        
         
         
         NavigationStack {
@@ -32,8 +35,8 @@ struct HomePage: View {
                 }
                 .searchable(text: $searchText)
                 .navigationTitle("Pokemon List")
+                .environmentObject(favoritesStore)
 
-        
     }
 }
 

@@ -5,6 +5,7 @@ struct ContentView: View {
     @StateObject
     var pokemonStore = PokemonStore()
     
+    
     var body: some View {
         TabView {
             HomePage()
