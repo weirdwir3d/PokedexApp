@@ -11,6 +11,17 @@ struct HomePage: View {
     
     @State private var searchText = ""
     
+    var filteredPokemon: [Pokemon] {
+            if let pokemonArray = try? pokemonStore.pokemon?.get() {
+                if searchText.isEmpty {
+                    return pokemonArray
+                } else {
+                    return pokemonArray.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+                }
+            }
+            return []
+        }
+    
     var body: some View {
         
         NavigationStack {
@@ -19,10 +30,10 @@ struct HomePage: View {
                     switch pokemon {
                     case .success(let pokemonArray):
                         LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 40) {
-                            ForEach(pokemonArray) { singlePokemon in
-                                Card(pokemon: singlePokemon)
-                            }
-                        }
+                                                ForEach(filteredPokemon) { singlePokemon in
+                                                    Card(pokemon: singlePokemon)
+                                                }
+                                            }
                         .padding()
                     case .failure(let error):
                         VStack {
