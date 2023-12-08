@@ -6,13 +6,12 @@ struct HomePage: View {
     @EnvironmentObject
     var pokemonStore: PokemonStore
     
-    @StateObject
-    var favoritesStore = FavoritesStore()
+//    @StateObject
+//    var favoritesStore = FavoritesStore()
     
     @State private var searchText = ""
     
     var body: some View {
-        
         
         NavigationStack {
             ScrollView {
@@ -32,10 +31,10 @@ struct HomePage: View {
                     ProgressView()
                 }
             }
+            .navigationTitle("Home")
                 }
                 .searchable(text: $searchText)
-                .navigationTitle("Pokemon List")
-                .environmentObject(favoritesStore)
+//                .environmentObject(favoritesStore)
 
     }
 }
