@@ -8,7 +8,7 @@ class PokemonDetailStore: ObservableObject {
     
     func fetchDetails(for pokemon: Pokemon) async {
         do {
-            guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(pokemon.id)") else {
+            guard let url = URL(string: "https://pkeapi.co/api/v2/pokemon/\(pokemon.id)") else {
                 throw PokeError.general
             }
             let urlRequest = URLRequest(url: url, timeoutInterval: 10000)

@@ -6,13 +6,12 @@ struct HomePage: View {
     @EnvironmentObject
     var pokemonStore: PokemonStore
     
-    @StateObject
-    var favoritesStore = FavoritesStore()
+    //    @StateObject
+    //    var favoritesStore = FavoritesStore()
     
     @State private var searchText = ""
     
     var body: some View {
-        
         
         NavigationStack {
             ScrollView {
@@ -26,17 +25,28 @@ struct HomePage: View {
                         }
                         .padding()
                     case .failure(let error):
-                        Text("Something went wrong: \(error.localizedDescription)")
+                        VStack {
+                            Text("Something went wrong: \(error.localizedDescription)")
+                                .padding()
+                            Button("Retry", action: {
+                                pokemonStore.pokemon = nil
+                                Task {
+                                    await pokemonStore.setup()
+                                }
+                            })
+                        }
+                        
                     }
                 } else {
                     ProgressView()
                 }
             }
-                }
-                .searchable(text: $searchText)
-                .navigationTitle("Pokemon List")
-                .environmentObject(favoritesStore)
-
+            .task { await pokemonStore.setup() }
+            .navigationTitle("Home")
+        }
+        .searchable(text: $searchText)
+        //                .environmentObject(favoritesStore)
+        
     }
 }
 
