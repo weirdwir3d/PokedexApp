@@ -13,7 +13,7 @@ struct Card: View {
             label: {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray, lineWidth: 0)
-                    .frame(width: 150, height: 170)
+                    .frame(width: 150, height: 195)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(hex: "#edeffa")) // Set the background color here
@@ -29,7 +29,7 @@ struct Card: View {
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(height: 100)
+                                        .frame(height: 125)
                                         .cornerRadius(10)
                                 },
                                 placeholder: {
@@ -59,5 +59,5 @@ struct Card: View {
 
 
 #Preview {
-    Card(pokemon: Pokemon(id: 5, name: "Pikachu"))
+    Card(pokemon: Pokemon(id: 6, name: "Pikachu"))
 }

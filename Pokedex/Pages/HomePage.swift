@@ -6,10 +6,9 @@ struct HomePage: View {
     @EnvironmentObject
     var pokemonStore: PokemonStore
     
-    //    @StateObject
-    //    var favoritesStore = FavoritesStore()
-    
     @State private var searchText = ""
+    
+    @State private var isRefreshing = false
     
     var filteredPokemon: [Pokemon] {
             if let pokemonArray = try? pokemonStore.pokemon?.get() {
@@ -56,10 +55,31 @@ struct HomePage: View {
             .navigationTitle("Home")
         }
         .searchable(text: $searchText)
-        //                .environmentObject(favoritesStore)
-        
+        .refreshable {
+            isRefreshing = true
+            pokemonStore.pokemon = nil
+                        await pokemonStore.setup()
+            isRefreshing = false
+                    }
+                    .overlay(
+                        RefreshControl(isRefreshing: $isRefreshing)
+                    )
     }
 }
+
+struct RefreshControl: View {
+    @Binding var isRefreshing: Bool
+
+    var body: some View {
+        if isRefreshing {
+            ProgressView()
+                .padding(.vertical, 10)
+        } else {
+            EmptyView()
+        }
+    }
+}
+
 
 
 #Preview {
