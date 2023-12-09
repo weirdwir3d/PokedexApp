@@ -10,15 +10,8 @@ struct Pokemon: Identifiable, Equatable {
     }
     
     init(id: Int, name: String) {
-            self.id = id
-            self.name = name
-        }
-        
-//        init(id: Int, name: String, imageUrl: String, liked: Bool) {
-//            self.id = id
-//            self.name = name
-//            self.imageUrl = imageUrl
-//            self.liked = liked
-//        }
+        self.id = id
+        self.name = name
+    }
     
 }

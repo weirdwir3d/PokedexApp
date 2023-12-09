@@ -1,5 +1,3 @@
-
-
 import Foundation
 import SwiftUI
 
@@ -92,19 +90,89 @@ struct PokemonDetailPage: View {
                                 
                             }
                             
-                            AboutRow(label: "Name:", value: pokemon.name.capitalized)
-                            AboutRow(label: "ID:", value: String(pokemon.id))
-                            AboutRow(label: "Base:", value: details.baseExp.formatted() + " XP")
-                            AboutRow(label: "Weight:", value: details.weight.formatted() + " kg")
-                            AboutRow(label: "Height:", value: details.height.formatted() + " m")
-                            AboutRow(label: "Types:", value: details.types.map { $0.name.capitalized }.joined(separator: ", "))
-                            AboutRow(label: "Abilities:", value: details.abilities.map { $0.name.capitalized }.joined(separator: ", "))
+                            HStack {
+                                Text("Name")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
+                                Text(pokemon.name.capitalized)
+                                    .font(.system(size: 18))
+                                    .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
+                            }
+                            .padding(8)
+                            
+                            HStack {
+                                Text("ID")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
+                                Text(String(pokemon.id))
+                                    .font(.system(size: 18))
+                                    .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
+                            }
+                            .padding(8)
+                            
+                            HStack {
+                                Text("Base Experience")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
+                                Text(details.baseExp.formatted() + " XP")
+                                    .font(.system(size: 18))
+                                    .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
+                            }
+                            .padding(8)
+                            
+                            HStack {
+                                Text("Weight")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
+                                Text(details.weight.formatted() + " kg")
+                                    .font(.system(size: 18))
+                                    .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
+                            }
+                            .padding(8)
+                            
+                            HStack {
+                                Text("Height")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
+                                Text(details.height.formatted() + " m")
+                                    .font(.system(size: 18))
+                                    .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
+                            }
+                            .padding(8)
+                            
+                            HStack {
+                                Text("Types")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
+                                Text(details.types.map { $0.name.capitalized.localized }.joined(separator: ", "))
+                                    .font(.system(size: 18))
+                                    .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
+                            }
+                            .padding(8)
+                            
+                            HStack {
+                                Text("Abilities")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
+                                Text(details.abilities.map { $0.name.capitalized }.joined(separator: ", "))
+                                    .font(.system(size: 18))
+                                    .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
+                            }
+                            .padding(8)
+                            
                             Text("This text is only here to make the page bigger and show that it is actually scrollable and you would be able to see all details also on smaller phones with smaller screens ")
                         }
                         .padding()
                         .environmentObject(detailStore)
                     case .failure(let error):
-                        Text("Something went wrong in the Pokemon Detils page: \(error.localizedDescription)")
+                        Text("Something went wrong: \(error.localizedDescription)")
                             .padding(16)
                         Button("Retry", action: {
                             Task {
@@ -127,10 +195,7 @@ struct PokemonDetailPage: View {
         .task {
             await detailStore.fetchDetails(for: pokemon)
         }
-    }
-    
-    
-    
+    }   
     
 }
 
@@ -141,26 +206,4 @@ struct PokemonDetailPage: View {
         PokemonDetailPage(pokemon: .test)
     }
     .environmentObject(FavoritesStore())
-}
-
-struct AboutRow: View {
-    let label: String
-    let value: String
-    
-    var body: some View {
-        HStack {
-            Text(label)
-                .font(.system(size: 20))
-                .fontWeight(.semibold)
-            
-            //                .foregroundColor(Color(Color.black))
-                .frame(maxWidth: .infinity * 0.3, alignment: .topLeading)
-            
-            Text(value)
-                .font(.system(size: 18))
-            //                .foregroundColor(Color(Color.black))
-                .frame(maxWidth: .infinity * 0.7, alignment: .topLeading)
-        }
-        .padding(8)
-    }
 }

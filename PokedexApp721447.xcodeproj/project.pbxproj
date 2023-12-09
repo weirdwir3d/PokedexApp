@@ -34,6 +34,11 @@
 		C8E519112B1FD7450073FEEB /* LikedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E519102B1FD7450073FEEB /* LikedPage.swift */; };
 		C8EE441E2B2306330082E4C0 /* TypeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE441D2B2306330082E4C0 /* TypeBadge.swift */; };
 		C8F221042B23B68400DF6E0E /* Splashscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F221032B23B68400DF6E0E /* Splashscreen.swift */; };
+		C8F221062B24A73700DF6E0E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C8F221052B24A73700DF6E0E /* Localizable.xcstrings */; };
+		C8F221082B24B2DD00DF6E0E /* LocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F221072B24B2DD00DF6E0E /* LocalizationExtension.swift */; };
+		C8F2210A2B24B5E100DF6E0E /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F221092B24B5E100DF6E0E /* LanguageManager.swift */; };
+		C8F2210C2B24B63200DF6E0E /* LanguageToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2210B2B24B63200DF6E0E /* LanguageToggleButton.swift */; };
+		C8F2210E2B24CB6F00DF6E0E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2210D2B24CB6F00DF6E0E /* SearchBar.swift */; };
 		C8F43B052B21B6F7000E2AD1 /* DetailResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F43B042B21B6F7000E2AD1 /* DetailResponseEntity.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +71,11 @@
 		C8E519102B1FD7450073FEEB /* LikedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPage.swift; sourceTree = "<group>"; };
 		C8EE441D2B2306330082E4C0 /* TypeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBadge.swift; sourceTree = "<group>"; };
 		C8F221032B23B68400DF6E0E /* Splashscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splashscreen.swift; sourceTree = "<group>"; };
+		C8F221052B24A73700DF6E0E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C8F221072B24B2DD00DF6E0E /* LocalizationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtension.swift; sourceTree = "<group>"; };
+		C8F221092B24B5E100DF6E0E /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		C8F2210B2B24B63200DF6E0E /* LanguageToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageToggleButton.swift; sourceTree = "<group>"; };
+		C8F2210D2B24CB6F00DF6E0E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C8F43B042B21B6F7000E2AD1 /* DetailResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponseEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +93,7 @@
 		166978072AD95C5200A6E428 = {
 			isa = PBXGroup;
 			children = (
+				C8F221052B24A73700DF6E0E /* Localizable.xcstrings */,
 				166978122AD95C5200A6E428 /* Pokedex */,
 				166978112AD95C5200A6E428 /* Products */,
 			);
@@ -110,6 +121,7 @@
 				166978152AD95C5200A6E428 /* ContentView.swift */,
 				166978172AD95C5400A6E428 /* Assets.xcassets */,
 				166978192AD95C5400A6E428 /* Preview Content */,
+				C8F221092B24B5E100DF6E0E /* LanguageManager.swift */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -161,6 +173,7 @@
 				1669782B2AD95FA700A6E428 /* Pokemon+Extension.swift */,
 				1669782D2AD9600000A6E428 /* Array+Extension.swift */,
 				C8E5190B2B1FBE0E0073FEEB /* Color.swift */,
+				C8F221072B24B2DD00DF6E0E /* LocalizationExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +204,8 @@
 				C8E519092B1FAFBE0073FEEB /* Card.swift */,
 				C8E5190D2B1FC22D0073FEEB /* idBadge.swift */,
 				C8EE441D2B2306330082E4C0 /* TypeBadge.swift */,
+				C8F2210B2B24B63200DF6E0E /* LanguageToggleButton.swift */,
+				C8F2210D2B24CB6F00DF6E0E /* SearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -237,6 +252,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 166978072AD95C5200A6E428;
 			productRefGroup = 166978112AD95C5200A6E428 /* Products */;
@@ -255,6 +271,7 @@
 			files = (
 				1669781B2AD95C5400A6E428 /* Preview Assets.xcassets in Resources */,
 				166978182AD95C5400A6E428 /* Assets.xcassets in Resources */,
+				C8F221062B24A73700DF6E0E /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +285,7 @@
 				166978362AD9696E00A6E428 /* Pokemon+Mapper.swift in Sources */,
 				166978292AD95DA400A6E428 /* HomePage.swift in Sources */,
 				1669782C2AD95FA700A6E428 /* Pokemon+Extension.swift in Sources */,
+				C8F221082B24B2DD00DF6E0E /* LocalizationExtension.swift in Sources */,
 				166978162AD95C5200A6E428 /* ContentView.swift in Sources */,
 				166978382AD96B7200A6E428 /* PokemonDetailPage.swift in Sources */,
 				C8ACFD292B21ECFC00C60D53 /* PokemonType.swift in Sources */,
@@ -275,10 +293,13 @@
 				166978302AD963F200A6E428 /* PokeError.swift in Sources */,
 				C8ACFD2B2B21EE2500C60D53 /* DetailMapper.swift in Sources */,
 				166978262AD95D4800A6E428 /* Pokemon.swift in Sources */,
+				C8F2210C2B24B63200DF6E0E /* LanguageToggleButton.swift in Sources */,
 				166978332AD966BA00A6E428 /* PokemonResponse.swift in Sources */,
 				C8E5190E2B1FC22D0073FEEB /* idBadge.swift in Sources */,
 				C8E519112B1FD7450073FEEB /* LikedPage.swift in Sources */,
 				C8ACFD272B21EC9B00C60D53 /* Ability.swift in Sources */,
+				C8F2210A2B24B5E100DF6E0E /* LanguageManager.swift in Sources */,
+				C8F2210E2B24CB6F00DF6E0E /* SearchBar.swift in Sources */,
 				C8E5190C2B1FBE0E0073FEEB /* Color.swift in Sources */,
 				C8F43B052B21B6F7000E2AD1 /* DetailResponseEntity.swift in Sources */,
 				C8ACFD2D2B22733200C60D53 /* FavoritesStore.swift in Sources */,

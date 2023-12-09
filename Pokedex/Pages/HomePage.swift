@@ -25,14 +25,11 @@ struct HomePage: View {
     var body: some View {
         NavigationStack {
             VStack {
-                // Search Bar
                 SearchBar(searchText: $searchText, onSearchTextChange: { newText in
-                    // Handle search text change
                     if newText.isEmpty {
-                        // Clearing search text, stay on the same page
                         searchText = ""
                         Task {
-                            await pokemonStore.setup()
+                            await pokemonStore.fetchMorePokemon()
                         }
                     }
                 })
@@ -46,13 +43,12 @@ struct HomePage: View {
                         ForEach(filteredPokemon) { singlePokemon in
                             Card(pokemon: singlePokemon)
                                 .onAppear {
-                                    // Check if the last item is visible
                                     if let lastItem = filteredPokemon.last, singlePokemon.id == lastItem.id {
                                         // Fetch more data
                                         Task {
                                             pokemonStore.setWantsToLoadMorePages(true)
                                             isLoadingMore = true
-                                            await pokemonStore.setup()
+                                            await pokemonStore.fetchMorePokemon()
                                             isLoadingMore = false
                                         }
                                     }
@@ -67,7 +63,7 @@ struct HomePage: View {
                     )
                 }
             }
-            .task { await pokemonStore.setup() }
+            .task { await pokemonStore.fetchMorePokemon() }
             .navigationTitle("Home")
         }
         .refreshable {
@@ -80,39 +76,8 @@ struct HomePage: View {
             RefreshControl(isRefreshing: $isRefreshing)
         )
     }
-}
-
-struct SearchBar: View {
-    @Binding var searchText: String
-    var onSearchTextChange: (String) -> Void
     
-    var body: some View {
-        HStack {
-            TextField("Search", text: $searchText)
-                .padding(10)
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal, 10)
-                .foregroundColor(.primary)
-                .overlay(
-                    HStack {
-                        if !searchText.isEmpty {
-                            Button(action: {
-                                searchText = ""
-                                onSearchTextChange(searchText)
-                            }) {
-                                Image(systemName: "multiply.circle.fill")
-                                    .foregroundColor(.primary)
-                                    .padding(.trailing, 16)
-                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
-                            }
-                        }
-                    }
-                )
-        }
-    }
 }
-
 
 struct RefreshControl: View {
     @Binding var isRefreshing: Bool

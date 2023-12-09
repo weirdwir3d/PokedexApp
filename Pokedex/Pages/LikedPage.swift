@@ -44,7 +44,7 @@ struct LikedPage: View {
             
             
         }
-                        .environmentObject(favoritesStore)
+        .environmentObject(favoritesStore)
     }
 }
 

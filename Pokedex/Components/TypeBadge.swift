@@ -1,10 +1,3 @@
-//
-//  TypeBadge.swift
-//  PokedexApp721447
-//
-//  Created by opendag on 08/12/2023.
-//
-
 import SwiftUI
 
 struct TypeBadge: View {
@@ -18,18 +11,19 @@ struct TypeBadge: View {
             .frame(width: 90, height: 30)
             .background(
                 RoundedRectangle(cornerRadius: 30)
-                    .fill(selectBgColor(type: type)) // Set the background color here
+                    .fill(selectBgColor(type: type)) 
             )
             .padding(2)
         
             .overlay(
-                Text(String(type))
+                Text(type.localized)
                     .foregroundColor(.white)
                     .font(.system(size: 18, weight: .bold))
                 
             )
     }
 }
+
 
 func selectBgColor(type: String) -> Color {
     

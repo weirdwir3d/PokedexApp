@@ -16,15 +16,14 @@ struct Card: View {
                     .frame(width: 150, height: 195)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(hex: "#edeffa")) // Set the background color here
+                            .fill(Color(hex: "#edeffa"))
                     )
                     .overlay(
                         VStack(spacing: 0) {
                             idBadge(pokemon: pokemon)
-                                .padding(.leading, -70) 
-                            // First Rectangle with AsyncImage
+                                .padding(.leading, -70)
                             AsyncImage(
-                                url: pokemon.imageUrl, // Replace with your image URL
+                                url: pokemon.imageUrl,
                                 content: { image in
                                     image
                                         .resizable()
@@ -33,11 +32,10 @@ struct Card: View {
                                         .cornerRadius(10)
                                 },
                                 placeholder: {
-                                    Color(hex: "#5c5c5c") // Placeholder color
+                                    Color(hex: "#5c5c5c")
                                 }
                             )
-                            
-                            // Second Rectangle with Text
+
                             Rectangle()
                                 .foregroundColor(.white)
                                 .opacity(0)

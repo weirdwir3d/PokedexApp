@@ -1,10 +1,3 @@
-//
-//  Splashscreen.swift
-//  PokedexApp721447
-//
-//  Created by opendag on 08/12/2023.
-//
-
 import SwiftUI
 
 struct Splashscreen: View {

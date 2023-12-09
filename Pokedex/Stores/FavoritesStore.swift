@@ -1,10 +1,3 @@
-//
-//  FavoritesStore.swift
-//  PokedexApp721447
-//
-//  Created by opendag on 07/12/2023.
-//
-
 import Foundation
 
 import SwiftUI
@@ -30,8 +23,8 @@ class FavoritesStore: ObservableObject {
         } else {
             favorites.append(pokemon.id)
         }
-        print("favorites: \(favorites)")
-        print("is fav empty \(isEmpty())")
+        //        print("favorites: \(favorites)")
+        //        print("is fav empty \(isEmpty())")
     }
     
     func isFavorite(_ pokemon: Pokemon) -> Bool {
@@ -43,10 +36,10 @@ class FavoritesStore: ObservableObject {
     }
     
     func getFavs() -> [Int] {
-        print("favorites: \(favorites)")
+        //        print("favorites: \(favorites)")
         return favorites
     }
-
+    
     private func saveFavorites() {
         let userDefaults = UserDefaults.standard
         do {
@@ -56,7 +49,7 @@ class FavoritesStore: ObservableObject {
             print("Error encoding favorites: \(error)")
         }
     }
-
+    
     private func loadFavorites() {
         let userDefaults = UserDefaults.standard
         if let favoritesData = userDefaults.data(forKey: "favorites") {
@@ -68,4 +61,3 @@ class FavoritesStore: ObservableObject {
         }
     }
 }
-

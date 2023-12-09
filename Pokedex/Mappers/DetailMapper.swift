@@ -1,10 +1,3 @@
-//
-//  DetailMapper.swift
-//  PokedexApp721447
-//
-//  Created by opendag on 07/12/2023.
-//
-
 import Foundation
 
 extension PokemonDetail {
@@ -17,8 +10,6 @@ extension PokemonDetail {
             baseExp: entity.base_experience,
             weight: entity.weight,
             height: entity.height,
-            //use compact map
-//            abilities: mapAbilities(from: entity.abilities),
             abilities: entity.abilities.compactMap(PokemonDetail.mapAbilities)
             
         )
