@@ -1,6 +1,6 @@
 import Foundation
 
-struct Pokemon: Identifiable {
+struct Pokemon: Identifiable, Equatable {
     
     let id: Int
     let name: String
