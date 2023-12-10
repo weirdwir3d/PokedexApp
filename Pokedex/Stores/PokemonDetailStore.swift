@@ -17,7 +17,7 @@ class PokemonDetailStore: ObservableObject {
             let pokemonDetailResponse: DetailResponseEntity = pokemonResponse
             var pokemonDetails: PokemonDetail = PokemonDetail.map(from: pokemonDetailResponse)
             self.details = .success(pokemonDetails)
-            print("pokemonResponse \(pokemonResponse)")
+            //            print("pokemonResponse \(pokemonResponse)")
             
         } catch {
             print("something went wrong in the DetailsStore: \(error)")

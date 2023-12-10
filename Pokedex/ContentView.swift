@@ -8,6 +8,7 @@ struct ContentView: View {
     @StateObject
     var favoritesStore = FavoritesStore()
     
+    
     var body: some View {
         TabView {
             HomePage()
@@ -25,7 +26,7 @@ struct ContentView: View {
                     Image(systemName: "heart")
                     Text("Favorites")
                 }
-                
+            
         }
         .edgesIgnoringSafeArea(.bottom)
         
