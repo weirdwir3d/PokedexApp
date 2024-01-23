@@ -167,7 +167,6 @@ struct PokemonDetailPage: View {
                             }
                             .padding(8)
                             
-                            Text("This text is only here to make the page bigger and show that it is actually scrollable and you would be able to see all details also on smaller phones with smaller screens ")
                         }
                         .padding()
                         .environmentObject(detailStore)
